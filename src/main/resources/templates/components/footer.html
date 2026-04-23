@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<div id="footer-content" th:fragment="footer">
+    <a th:href="@{/}" id="footer-logo">Test site</a>
+    <ul>
+        <div th:replace="~{components/links.html}"></div>
+    </ul>
+    <blockquote>
+        Sed blandit est nec quam vulputate, id vulputate ipsum scelerisque.
+        Etiam in elit ornare, fermentum nisl vel, gravida ipsum.
+    </blockquote>
+</div>

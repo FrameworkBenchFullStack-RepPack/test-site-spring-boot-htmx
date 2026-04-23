@@ -1,0 +1,5 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <li th:each="link: ${links}">
+        <a th:href="${link.path}" th:text="${link.name}">default</a>
+    </li>

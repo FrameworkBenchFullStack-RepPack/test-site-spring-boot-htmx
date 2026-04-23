@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:fragment="html(content)" lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Test site</title>
+        <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+        <link rel="stylesheet" href="/css/site.css" />
+        <link rel="stylesheet" href="/css/header.css" />
+        <script src="/js/htmx.min.js"></script>
+        <script src="/js/site.js" defer></script>
+    </head>
+    <body>
+        <th:block th:if="${hideHeader != true}">
+            <header th:replace="~{components/header :: header}"></header>
+        </th:block>
+
+        <main role="main" th:class="'page-width' + (${hideHeader == true} ? ' no-top-margin' : '')">
+            <div th:replace="${content}"></div>
+        </main>
+
+        <footer th:insert="~{components/footer :: footer}"></footer>
+    </body>
+</html>

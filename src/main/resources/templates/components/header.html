@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<header class="header" th:fragment="header">
+    <nav>
+        <ul>
+            <li>
+                <a href="/">
+                    <img id="icon" class="icon" src="/assets/icon.svg" alt="Front page" loading="lazy" />
+                </a>
+            </li>
+            <div th:replace="~{components/links.html}"></div>
+        </ul>
+    </nav>
+</header>

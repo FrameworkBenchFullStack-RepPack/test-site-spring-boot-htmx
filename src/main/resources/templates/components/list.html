@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<th:block th:fragment="list-frag">
+    <div id="list" th:class="'list' + (${sticky} ? ' sticky' : '')">
+        <div class="controls">
+            <form id="filter-form"
+                  hx-get="/list/data"
+                  hx-target="#list-data"
+                  hx-swap="innerHTML"
+                  hx-trigger="change delay:300ms, input delay:300ms, submit">
+
+                <label>
+                    Sort by:
+                    <select name="sort">
+                        <option value="name" th:selected="${sort == 'name'}">Name</option>
+                        <option value="age" th:selected="${sort == 'age'}">Age</option>
+                        <option value="category" th:selected="${sort == 'category'}">Category</option>
+                    </select>
+                </label>
+
+                <fieldset>
+                    <legend>Age</legend>
+                    <label>
+                        From:
+                        <input type="number" name="age_from" min="0" max="100" step="1" th:value="${age_from}" required />
+                    </label>
+                    <label>
+                        To:
+                        <input type="number" name="age_to" min="0" max="100" step="1" th:value="${age_to}" required />
+                    </label>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Categories</legend>
+                    <label th:each="cat : ${categories}">
+                        <input type="checkbox" name="category" th:value="${cat.id}"
+                               th:checked="${selectedCategories.contains(cat.id)}" />
+                        <span th:text="${cat.name}">Category</span>
+                    </label>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Paging</legend>
+                    <label>
+                        Size:
+                        <input type="number" name="size" min="1" max="1000" step="1" th:value="${size}" required />
+                    </label>
+                    <label>
+                        Page:
+                        <input type="number" name="page_num" min="1" max="2000000" step="1" th:value="${page_num}" required />
+                    </label>
+                </fieldset>
+
+                <button type="submit">Search</button>
+            </form>
+        </div>
+
+        <div id="list-data" class="data">
+            <th:block th:insert="~{components/list-results :: results}"></th:block>
+        </div>
+    </div>
+</th:block>
+</body>
+</html>
