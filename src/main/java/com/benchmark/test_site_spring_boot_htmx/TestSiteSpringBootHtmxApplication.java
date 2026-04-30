@@ -1,5 +1,6 @@
 package com.benchmark.test_site_spring_boot_htmx;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -13,6 +14,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @RestController
 public class TestSiteSpringBootHtmxApplication {
 
+	@Value("${server.port:8080}")
+	private int port;
+
 	public static void main(String[] args) {
 		SpringApplication.run(TestSiteSpringBootHtmxApplication.class, args);
 	}
@@ -22,7 +26,7 @@ public class TestSiteSpringBootHtmxApplication {
 		return new WebMvcConfigurer() {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/**").allowedOrigins("http://localhost:8080")
+				registry.addMapping("/**").allowedOrigins("http://localhost:" + port)
 						.allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
 						.allowedHeaders("*")
 						.allowCredentials(true);
