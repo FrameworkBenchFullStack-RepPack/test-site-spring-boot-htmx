@@ -25,7 +25,7 @@ public class ListController {
         this.categoryRepository = categoryRepository;
     }
 
-    @GetMapping("/list")
+    @GetMapping({ "/list", "/list/" })
     public String list(
             @RequestParam(required = false) String sort,
             @RequestParam(required = false) Integer age_from,
@@ -46,7 +46,8 @@ public class ListController {
         List<Integer> allCategoryIds = categories.stream().map(Category::getId).toList();
 
         List<Integer> validCategory = (category != null)
-                ? category.stream().filter(Objects::nonNull).filter(allCategoryIds::contains).collect(Collectors.toList())
+                ? category.stream().filter(Objects::nonNull).filter(allCategoryIds::contains)
+                        .collect(Collectors.toList())
                 : null;
 
         List<Integer> selectedCategories = (validCategory != null && !validCategory.isEmpty())
