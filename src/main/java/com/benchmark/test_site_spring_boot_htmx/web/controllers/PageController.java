@@ -70,19 +70,19 @@ public class PageController {
         return "index";
     }
 
-    @GetMapping("/static-1")
+    @GetMapping({ "/static-1", "/static-1/" })
     public String static1(Model model) {
         model.addAttribute("title", "Test site");
         return "static-1";
     }
 
-    @GetMapping("/static-2")
+    @GetMapping({ "/static-2", "/static-2/" })
     public String static2(Model model) {
         model.addAttribute("title", "Test site");
         return "static-2";
     }
 
-    @GetMapping("/live")
+    @GetMapping({ "/live", "/live/" })
     public String live(Model model) {
         model.addAttribute("title", "Test site");
         return "live";
