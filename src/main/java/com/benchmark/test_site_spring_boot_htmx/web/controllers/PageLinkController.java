@@ -12,9 +12,9 @@ public class PageLinkController {
     @ModelAttribute("links")
     public List<PageLink> Paths() {
         return List.of(
-                new PageLink("static 1", "/static-1"),
-                new PageLink("static 2", "/static-2"),
-                new PageLink("live", "/live"),
-                new PageLink("list", "/list"));
+                new PageLink("Static 1", "/static-1"),
+                new PageLink("Static 2", "/static-2"),
+                new PageLink("Live", "/live"),
+                new PageLink("List", "/list"));
     }
 }
