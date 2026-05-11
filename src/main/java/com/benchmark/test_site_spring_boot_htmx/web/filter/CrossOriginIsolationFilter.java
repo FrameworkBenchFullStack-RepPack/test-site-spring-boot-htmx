@@ -22,7 +22,7 @@ public class CrossOriginIsolationFilter extends OncePerRequestFilter {
         response.setHeader("X-Content-Type-Options", "nosniff");
         response.setHeader("Cache-Control", "public, max-age=86400");
         response.setHeader("Content-Security-Policy",
-                "default-src 'self'; style-src 'self' 'unsafe-inline'; base-uri 'self'; frame-ancestors 'none'; object-src 'none'; form-action 'self'");
+                "default-src 'self' 'unsafe-inline'; base-uri 'self'; frame-ancestors 'none'; object-src 'none'; form-action 'self'");
 
         filterChain.doFilter(request, response);
     }
