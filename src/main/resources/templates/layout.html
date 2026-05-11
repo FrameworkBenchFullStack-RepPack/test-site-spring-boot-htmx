@@ -7,10 +7,18 @@
         <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
         <link rel="stylesheet" href="/css/site.css" />
         <link rel="stylesheet" href="/css/header.css" />
-        <script src="/js/htmx.min.js"></script>
-        <script src="/js/site.js" defer></script>
+        <script type="importmap">
+            {
+                "imports": {
+                    "htmx.org": "/js/vendor/htmx.esm.min@2.0.8.js",
+                    "htmx-ext-head-support": "/js/vendor/htmx-ext-head-support.esm.min@2.0.5.js",
+                    "@stomp/stompjs": "/js/vendor/stomp.min@7.3.0.js"
+                }
+            }
+        </script>
+        <script type="module" src="/js/site.js"></script>
     </head>
-    <body>
+    <body hx-boost="true" hx-ext="head-support">
         <th:block th:if="${hideHeader != true}">
             <header th:replace="~{components/header :: header}"></header>
         </th:block>
